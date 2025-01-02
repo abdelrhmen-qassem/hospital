@@ -16,6 +16,8 @@ use Inertia\Inertia;
 |
 */
 
+//DashBoard Route
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
