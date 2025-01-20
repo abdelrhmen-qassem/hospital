@@ -19,8 +19,9 @@ use Inertia\Inertia;
 
 Route::resource("/dashboard_admin",DashboardController::class);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard.user.dashboard');
-// })->middleware(['auth'])->name('dashboard.user');
+
+Route::get('/dashboard/user', function () {
+    return view('dashboard.user.dashboard');
+})->middleware(['auth',])->name('dashboard.user');
 
 require __DIR__.'/auth.php';
