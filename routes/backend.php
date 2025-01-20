@@ -17,6 +17,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::resource("",DashboardController::class);
+Route::resource("/dashboard_admin",DashboardController::class);
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard.user.dashboard');
+// })->middleware(['auth'])->name('dashboard.user');
 
 require __DIR__.'/auth.php';
