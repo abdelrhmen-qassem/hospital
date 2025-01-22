@@ -26,8 +26,8 @@
 										<div class="card-sigin">
 											<div class="main-signup-header">
 												<h2>Welcome back!</h2>
-												<h5 class="font-weight-semibold mb-4">Please sign in to continue.</h5>
-												<form action="#">
+												<h5 class="font-weight-semibold mb-4">دخول المستخدم</h5>
+                                                <form method="POST" action="{{ route('login.user') }}">
 													<div class="form-group">
 														<label>Email</label> <input class="form-control" placeholder="Enter your email" type="text">
 													</div>
