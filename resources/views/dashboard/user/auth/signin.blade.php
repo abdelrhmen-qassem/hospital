@@ -32,6 +32,15 @@
                                     <div class="card-sigin">
                                         <div class="main-signup-header">
                                             <h2>Welcome back!</h2>
+                                            <div>
+                                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="user">دخول المريض</option>
+                                                    <option value="admin">دخول ادمن</option>
+                                                    {{-- <option value="3">Three</option> --}}
+                                                  </select>
+
+                                            </div>
                                             <h5 class="font-weight-semibold mb-4">دخول المستخدم</h5>
                                             <form method="POST" action="{{ route('login.user') }}">
                                                 @csrf
@@ -56,7 +65,6 @@
                                                                 class="fab fa-twitter"></i> Signup with Twitter</button>
                                                     </div>
                                                 </div>
-                                                @csrf
                                             </form>
                                             <div class="main-signin-footer mt-5">
                                                 <p><a href="">Forgot password?</a></p>

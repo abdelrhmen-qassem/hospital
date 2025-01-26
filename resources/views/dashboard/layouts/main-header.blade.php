@@ -268,7 +268,6 @@
                                         <a class="dropdown-item" href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">><i class="bx bx-log-out"></i> Sign Out</a>
-{{-- --}}
                                     </form>
                                 </div>
 							</div>
