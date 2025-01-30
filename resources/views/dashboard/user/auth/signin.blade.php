@@ -37,18 +37,20 @@
                                     <div class="card-sigin">
                                         <div class="main-signup-header">
                                             <h2>Welcome back!</h2>
-                                            <div>
+                                            <div class="form-group">
                                                 <label for="exampleFormControlSelect">حدد طريقة الدخول</label>
-                                                <select class="form-control" id="exampleFormControlSelect">
-                                                    <option selected disabled>Open this select menu</option>
+                                                <select class="form-control" id="sectionChooser">
+                                                    <option selected disabled> اختر من الفائمة</option>
                                                     <option value="user">دخول المريض</option>
                                                     <option value="admin">دخول ادمن</option>
                                                     {{-- <option value="3">Three</option> --}}
                                                 </select>
 
                                             </div>
+
+                                            {{-- form user --}}
                                             <div class="loginform" id="user">
-                                                <h5 class="font-weight-semibold mb-4">دخول المستخدم</h5>
+                                                <h5 class="font-weight-semibold mb-4"> دخول المستخدم</h5>
                                                 <form method="POST" action="{{ route('login.user') }}">
                                                     @csrf
                                                     <div class="form-group">
@@ -80,6 +82,42 @@
                                                             an Account</a></p>
                                                 </div>
                                             </div>
+
+                                            {{-- form admin --}}
+                                            <div class="loginform" id="admin">
+                                                <h5 class="font-weight-semibold mb-4"> دخول ادمن </h5>
+                                                <form method="POST" action="{{ route('login.user') }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label>Email</label> <input class="form-control" name="email"
+                                                            placeholder="Enter your email" type="email"
+                                                            :value="old('email')" required autofocus />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Password</label> <input class="form-control"
+                                                            placeholder="Enter your password" type="password"
+                                                            name="password" required autocomplete="current-password">
+                                                    </div><button type="submit" class="btn btn-main-primary btn-block">Sign
+                                                        In</button>
+                                                    <div class="row row-xs">
+                                                        <div class="col-sm-6">
+                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i>
+                                                                Signup with Facebook</button>
+                                                        </div>
+                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
+                                                            <button class="btn btn-info btn-block"><i
+                                                                    class="fab fa-twitter"></i> Signup with Twitter</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="main-signin-footer mt-5">
+                                                    <p><a href="">Forgot password?</a></p>
+                                                    <p>Don't have an account? <a
+                                                            href="{{ url('/' . ($page = 'signup')) }}">Create
+                                                            an Account</a></p>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -92,12 +130,12 @@
     </div>
 @endsection
 @section('js')
-<script>
-    $('#sectionChooser').change(function(){
-        var myID = $(this).val();
-        $('.panel').each(function(){
-myID === $(this).attr('id') ? $(this).show() : $(this).hide();
+    <script>
+        $('#sectionChooser').change(function() {
+            var myID = $(this).val();
+            $('.panel').each(function() {
+                myID === $(this).attr('id') ? $(this).show() : $(this).hide();
+            });
         });
-    });
-</script>
+    </script>
 @endsection
