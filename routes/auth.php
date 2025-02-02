@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -12,15 +13,24 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
+    //############################# Route user #######################################
+
     Route::get('user/login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
-    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.user');
+    Route::post('/login/user', [AuthenticatedSessionController::class, 'store'])->name('login.user');
+
+        //############################# Route admin #######################################
+        
+
+
+    Route::post('/login/admin', [AdminController::class, 'store'])->name('login.admin');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');

@@ -50,7 +50,7 @@
 
                                             {{-- form user --}}
                                             <div class="loginform" id="user">
-                                                <h5 class="font-weight-semibold mb-4"> دخول المستخدم</h5>
+                                                <h5 class="font-weight-semibold mb-4"> دخول المريض</h5>
                                                 <form method="POST" action="{{ route('login.user') }}">
                                                     @csrf
                                                     <div class="form-group">
@@ -86,7 +86,7 @@
                                             {{-- form admin --}}
                                             <div class="loginform" id="admin">
                                                 <h5 class="font-weight-semibold mb-4"> دخول ادمن </h5>
-                                                <form method="POST" action="{{ route('login.user') }}">
+                                                <form method="POST" action="{{ route('login.admin') }}">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label>Email</label> <input class="form-control" name="email"
@@ -133,7 +133,7 @@
     <script>
         $('#sectionChooser').change(function() {
             var myID = $(this).val();
-            $('.panel').each(function() {
+            $('.loginform').each(function() {
                 myID === $(this).attr('id') ? $(this).show() : $(this).hide();
             });
         });
