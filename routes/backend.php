@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +21,22 @@ use Inertia\Inertia;
 Route::resource("/dashboard_admin",DashboardController::class);
 
 
-Route::get('/dashboard/user', function () {
-    return view('dashboard.user.dashboard');
-})->middleware(['auth',])->name('dashboard.user');
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ //...
 
 
-Route::get('/dashboard/admin', function () {
-    return view('dashboard.admin.dashboard');
-})->middleware(['auth:admin',])->name('dashboard.admin');
+        Route::get('/dashboard/user', function () {
+            return view('dashboard.user.dashboard');
+        })->middleware(['auth',])->name('dashboard.user');
 
-require __DIR__.'/auth.php';
+
+        Route::get('/dashboard/admin', function () {
+            return view('dashboard.admin.dashboard');
+        })->middleware(['auth:admin',])->name('dashboard.admin');
+
+        require __DIR__.'/auth.php';
+
+    });
