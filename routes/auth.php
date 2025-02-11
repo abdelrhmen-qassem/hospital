@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     //############################# Route user #######################################
-    Route::get('user/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('/login/user', [AuthenticatedSessionController::class, 'store'])->name('login.user');
 });
 
@@ -27,12 +27,17 @@ Route::middleware('auth')->group(function () {
 
 //############################# Route admin #######################################
 Route::middleware('guest:admin')->group(function () {
+    // Route::get('/login/admin', [AdminController::class, 'showLoginForm'])->name('login.admin.form');
     Route::post('/login/admin', [AdminController::class, 'store'])->name('login.admin');
 });
 
 Route::middleware('auth:admin')->group(function () {
     Route::post('/logout/admin', [AdminController::class, 'destroy'])->name('logout.admin');
 
+});
+
+
+Route::middleware('guest')->group(function () {
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');

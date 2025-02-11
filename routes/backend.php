@@ -18,14 +18,14 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::resource("/dashboard_admin",DashboardController::class);
+// Route::resource("/dashboard_admin",DashboardController::class);
 
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){ 
+    ], function(){
 
 
         Route::get('/dashboard/user', function () {

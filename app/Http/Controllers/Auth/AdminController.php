@@ -25,6 +25,12 @@ class AdminController extends Controller
         //
     }
 
+
+    // public function showLoginForm()
+    // {
+    //     return view('admin.login');
+    // }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -65,7 +71,7 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-     public function destroy(Request $request)
+    public function destroy(Request $request)
     {
         Auth::guard('admin')->logout();
 
