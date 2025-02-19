@@ -37,6 +37,17 @@
                                     <div class="card-sigin">
                                         <div class="main-signup-header">
                                             <h2>Welcome back!</h2>
+
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                            
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect">حدد طريقة الدخول</label>
                                                 <select class="form-control" id="sectionChooser">
